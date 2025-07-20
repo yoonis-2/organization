@@ -40,6 +40,7 @@ function SmartWatches(){
   seconds.innerHTML = Today.getSeconds()
 
   Today.getHours() % 12 < 10 ? hour.innerHTML = `0${Today.getHours() %12}`  : hour.innerHTML = Today.getHours() % 12 + " :"
+  Today.getMinutes() <10 ? minutes.innerHTML = `0${Today.getMinutes()}`     :   minutes.innerHTML = Today.getMinutes() + " :" 
   Today.getSeconds() < 10 ? seconds.innerHTML = `0${Today.getSeconds()}`    :  seconds.innerHTML = Today.getSeconds()
 }
 

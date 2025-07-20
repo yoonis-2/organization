@@ -2,11 +2,8 @@ const iconOne = document.querySelector("#iconOne")
 const menu = document.querySelector("#menu")
 const btnInc = document.querySelector("#btnInc")
 const zero = document.querySelector("#Zero")
-const day = document.querySelector("#day")
-const month = document.querySelector("#month")
-const year = document.querySelector("#year")
 const hour  = document.querySelector("#hour")
-const minutes = document.querySelector("#minutes")
+const minutes= document.querySelector("#minutes")
 const seconds = document.querySelector("#seconds")
 const AmPm = document.querySelector("#AmPm")
 const minus = document.querySelector("#minus")
@@ -20,7 +17,7 @@ const range2 = document.querySelector("#range2")
 const minus3 = document.querySelector("#minus3")
 const plus3 = document.querySelector("#plus3")
 const range3 = document.querySelector("#range3")
-console.log(iconOne, menu, btnInc , zero, day, month, year, hour, minutes, seconds, AmPm, minus, plus, range, minus2, plus2, range2, minus3, plus3, range3)
+console.log(iconOne, menu, btnInc , zero, hour, minutes, seconds,  plus, range, minus2, plus2, range2, minus3, plus3, range3)
 
 let count = 0
 
@@ -36,61 +33,21 @@ btnInc.addEventListener("click", () => {
 
 // Watches
 
-const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
-
 function SmartWatches(){
-    const Time = new Date()
+  let Today = new Date()
+  hour.innerHTML = Today.getHours() %12
+  minutes.innerHTML = Today.getMinutes()
+  seconds.innerHTML = Today.getSeconds()
 
-    day.innerHTML = Time.getDay()
-    month.innerHTML = monthNames[Time.getMonth()]
-    year.innerHTML = Time.getFullYear()
-    hour.innerHTML = Time.getHours() % 12
-    minutes.innerHTML = Time.getMinutes() 
-    seconds.innerHTML = Time.getSeconds() 
-    //using if and else
-      // hours
-    if(Time.getHours() %12 < 10){
-      hour.innerHTML = `0${Time.getHours() % 12}` + " :"
-    }
-    else{
-      hour.innerHTML = Time.getHours() % 12 + " :"
-    }
-
-    // minutes
-    if(Time.getMinutes() < 10){
-      minutes.innerHTML = `0${Time.getMinutes()}` + " :"
-    }
-    else{
-      minutes.innerHTML = Time.getMinutes()  + " :"
-    }
-
-    // seconds
-
-    if(Time.getSeconds() < 10){
-      seconds.innerHTML = `0${Time.getSeconds()}` + " :"
-    }
-    else{
-      seconds.innerHTML = Time.getSeconds() + " :"
-    }
-
-    // AmPm
-
-    if(Time.getHours() > 12){
-      AmPm.innerHTML = "PM"
-    }else{
-      AmPm.innerHTML = "AM"
-    }
-
-    // Time.getHours() %12 < 10 ? hour.innerHTML = `0${Time.getHours() % 12}` : hour.innerHTML = Time.getHours() % 12 + " :"
-    // Time.getMinutes() < 10 ? minutes.innerHTML = `0${Time.getMinutes()}` : minutes.innerHTML = Time.getMinutes() + " :"
-    // Time.getSeconds() < 10 ? seconds.innerHTML = `0${Time.getSeconds()}` : seconds.innerHTML = Time.getSeconds() + " :"
-    // Time.getHours()  > 12 ? AmPm.innerHTML = "PM"  : AmPm.innerHTML = "AM"
-
+  Today.getHours() % 12 < 10 ? hour.innerHTML = `0${Today.getHours() %12}`  : hour.innerHTML = Today.getHours() % 12 + " :"
+  Today.getSeconds() < 10 ? seconds.innerHTML = `0${Today.getSeconds()}`    :  seconds.innerHTML = Today.getSeconds()
 }
 
 setInterval(SmartWatches)
+
+
+
+
 
 plus.addEventListener("click", () =>{
   range.style.display = "block"
